@@ -18,3 +18,4 @@ Create and host a simple Node.js server that returns a basic HTML page.
 4. Add a new "Web Service" and select this repo
 5. Create a Pull request and include a link to your live Render link the description
 6. Share your server in class next week!
+7. https://my-first-server-dequ.onrender.com/
