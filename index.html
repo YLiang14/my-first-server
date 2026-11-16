@@ -6,13 +6,204 @@
     <title>My First Server</title>
     <style>
         /* Your CSS goes here */
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f32c0d 0%, #f6e904 100%);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* main card container */
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 2rem 2rem 2.5rem;
+            border-radius: 16px;
+            border: 2px solid hwb(13 12% 6%);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.005);
+        }
+
+        h1 {
+            font-family: "Protest Revolution", sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #b43b1c;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0 #ffdab9;
+            border-bottom: 3px dashed #ffb882;
+            padding-bottom: 0.75rem;
+        }
+
+        h2 {
+            font-family: "Protest Revolution", sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #be4a24;
+            margin: 1.5rem 0 ;
+        }
+
+
+        p {
+            font-family: "Gowun Batang", serif;
+            font-size: 1.15rem;
+            color: #2e241e;
+            background: hsl(32, 65%, 80%);
+            padding: 0.9rem 1.4rem;
+            margin-bottom: 1rem;
+            border-radius: 16px 16px ;
+            border-left: 8px solid #e35f3a;
+            box-shadow: 0 4px 8px rgba(190, 74, 36, 0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        p:hover {
+            background: #ffefe0;
+            box-shadow: 0 8px 16px rgba(190, 74, 36, 0.12);
+        }
+    
+        /* interactive button area */
+        .interactive-section {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 3px dashed #d78854;
+        }
+
+        .interactive-section p {
+            background: transparent;
+            box-shadow: none;
+            border-left: none;
+            padding: 0.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: #824d2e;
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            background: #d9431c;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #942e10, 0 10px 18px -6px rgba(180, 60, 20, 0.4);
+            transition: all 0.08s ease-in;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+
+        .btn:hover {
+            transform: translateY(5px);
+            background: #edc00b;
+             box-shadow: 0 2px 0 hsl(54, 63%, 38%), 0 10px 18px -6px 
+        }
+
+        .surprise-message {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ed991b;
+            background: hsl(44, 79%, 89%);
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            display: inline-block;
+            min-height: 3.5rem;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 3px 0 #f5b48b;
+        }
+
+        /* mobile */
+        @media (max-width: 550px) {
+            body { padding: 1rem 0.75rem; }
+            .card { padding: 1.5rem 1rem; }
+            h1 { font-size: 1.9rem; }
+            h2 { font-size: 1.6rem; }
+            p { font-size: 1rem; padding: 0.8rem 1rem; }
+            .btn { font-size: 1rem; padding: 0.7rem 1.6rem; }
+        }
     </style>
 </head>
 <body>
     <!-- Your HTML goes here -->
+    <div class="card">
+        <h1>My favorite holiday traditions!</h1>
+
+        <h2>Chinese New Year</h2>
+        <p>Family and relatives get together to eating some traditional chinese food.</p>
+        <p>The type of food we have is roast pork, whole chicken, fish and shrimp.</p>
+        <p> Parents and older relatives give you red envelopes filled with money.</p>
+        <p>You get wear something new is can bring you good luck for the new year ahead.</p>
+        <p>You can play with fireworks! and you go to Chinatown which you can see the parade with lion dance.</p>
+        <p>Dessert you get to is sweet rice balls!</p>
+
+        
+        <div class="interactive-section">
+            <p>Click for a New Year fortune</p>
+            <button class="btn" id="luckyButton"> Click Me</button>
+            <div class="surprise-message" id="messageBox">Your wish appears here…</div>
+        </div>
+    </div>
     
     <script>
         // Your javascript code (optional)
+         // changes the message when you click the button
+        (function() {
+            // Array of lucky wishes
+            const luckyWishes = [
+                "🥠  Good luck and prosperity!  🥠",
+                "🧧  May your red envelopes be full!  🧧",
+                "🐉  Happiness and health to your family!  🐉",
+                "🍊  Sweet moments like rice balls!  🍊",
+                "🎆  A year of joy and fireworks!  🎆",
+                "🍗  Delicious food and togetherness!  🍗",
+                "💰  Wealth and good fortune!  💰",
+                "✨  Shiny new beginnings!  ✨"
+            ];
+
+            // Get the button and the message box
+            const button = document.getElementById('luckyButton');
+            const messageBox = document.getElementById('messageBox');
+
+            // Function to pick a random wish and show it
+            function showRandomWish() {
+                const randomIndex = Math.floor(Math.random() * luckyWishes.length);
+                const wish = luckyWishes[randomIndex];
+                messageBox.textContent = wish;
+            }
+
+            // Add click event to the button
+            button.addEventListener('click', showRandomWish);
+
+            // show a wish on page load 
+            window.addEventListener('load', function() {
+                
+                showRandomWish();  // show a random wish immediately
+            });
+        })();
     </script>
 </body>
 </html>
